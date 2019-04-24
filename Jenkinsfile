@@ -9,19 +9,31 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'npm install'
+        echo 'I am in the building stage'
       }
     }
     stage('Test') {
-      steps {
-        sh './jenkins/scripts/test.sh'
+      parallel {
+        stage('Test 1') {
+          steps {
+            echo 'I am in the Testing 1 stage'
+          }
+        }
+        stage('Test 2') {
+          steps {
+            echo 'I am in the Testing 2 step'
+          }
+        }
+        stage('Test 3') {
+          steps {
+            echo 'I am in the Testing 3 stage'
+          }
+        }
       }
     }
     stage('Deliver') {
       steps {
-        sh './jenkins/scripts/deliver.sh'
-        input 'Finished using the web site? (Click "Proceed" to continue)'
-        sh './jenkins/scripts/kill.sh'
+        echo 'I am done!'
       }
     }
   }
