@@ -10,6 +10,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'I am in the building stage'
+        input(message: 'Do you want to procedure?', id: 'myid', ok: 'myok', submitter: 'mysubmitter', submitterParameter: 'mysubmitterparameter')
       }
     }
     stage('Test') {
