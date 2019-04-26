@@ -35,6 +35,12 @@ pipeline {
     stage('Deliver') {
       steps {
         echo 'I am done!'
+        withCredentials(bindings: [usernamePassword(credentialsId: 'docker-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+          sh 'echo $PASSWORD'
+          echo USERNAME
+          echo "username is $USERNAME"
+        }
+
       }
     }
   }
