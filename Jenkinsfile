@@ -42,7 +42,7 @@ pipeline {
         }
 
         withCredentials(bindings: [string(credentialsId: 'mysecret', variable: 'mysecret')]) {
-          sh 'echo $mysecret2'
+          sh 'echo $mysecret'
         }
 
       }
