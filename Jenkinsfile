@@ -41,8 +41,8 @@ pipeline {
           echo "username is $USERNAME"
         }
 
-        withCredentials(bindings: [string(credentialsId: 'mysecret1', variable: 'mysecret')]) {
-          sh 'echo $mysecret'
+        withCredentials(bindings: [string(credentialsId: 'mysecret', variable: 'mysecret')]) {
+          sh 'echo $mysecret2'
         }
 
       }
